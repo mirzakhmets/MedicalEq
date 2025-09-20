@@ -152,7 +152,7 @@ namespace MedicalEq
 	                    ]
 	                }
 	            ]
-	        }".Replace("${text}", text);
+	        }".Replace("${text}", text.Replace("\"", "\\\"").Replace("\n", "\\n"));
 	
 	        try
 	        {
@@ -218,7 +218,7 @@ namespace MedicalEq
 		void ButtonSendUserMessageClick(object sender, EventArgs e)
 		{
 			richTextBoxConversation.Text += 
-				"?: " + richTextBoxUserMessage.Text + "\n"
+				"?: " + richTextBoxUserMessage.Text + "\n!:"
 					+ this.MakeRequest(richTextBoxUserMessage.Text) + "\n\n";
 		}
 	}
