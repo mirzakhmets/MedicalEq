@@ -184,10 +184,10 @@ namespace MedicalEq
 	                
 	                string pattern = @"""text""\s*:\s*""([^""]*)""";
 	                
-	                Regex regex = new Regex(pattern);
+	                Regex regex = new Regex(pattern, RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
 
 			        // Find matches
-			        Match match = regex.Match(responseText);
+			        Match match = regex.Match(responseText.Replace("\\\"", "'"));
 			        
 			        if (match.Success)
 			        {
@@ -244,6 +244,10 @@ namespace MedicalEq
 			
 			foreach (Patient patient in Patient.Patients.Values) {
 				richTextBoxGenerated.Text += patient.MakeRequest() + "\n";
+			}
+			
+			foreach (Patient patient in Patient.Patients.Values) {
+				richTextBoxGenerated.Text += "К какой группе относится пациент '" + ParsingStream.ConvertToDefault(patient.Name) + "'?\n";
 			}
 			
 			richTextBoxGenerated.Text += "\n";

@@ -124,14 +124,14 @@ namespace MedicalEq
 						result += "Для группы '" + ParsingStream.ConvertToDefault(this.Name) + "': ";
 					}
 					
-					result += "если " + score.MakeRequest();
+					result += "если " + score.MakeRequest() + ", то следует вывод '" + ParsingStream.ConvertToDefault(score.Comment) + "'";
 					
 					++k;
 				}
 			}
 			
 			if (k > 0) {
-				result += ".";
+				result += ". ";
 			}
 			
 			k = 0;
@@ -141,10 +141,10 @@ namespace MedicalEq
 					if (k > 0) {
 						result += ", ";
 					} else {
-						result += "При этом: ";
+						result += "При этом может быть не обязательно: ";
 					}
 					
-					result += "если " + score.MakeRequest();
+					result += "если " + score.MakeRequest() + ", то следует вывод '" + ParsingStream.ConvertToDefault(score.Comment) + "'";
 					
 					++k;
 				}

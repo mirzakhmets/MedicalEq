@@ -92,7 +92,7 @@ namespace MedicalEq
 			this.tabControlMain.Location = new System.Drawing.Point(12, 12);
 			this.tabControlMain.Name = "tabControlMain";
 			this.tabControlMain.SelectedIndex = 0;
-			this.tabControlMain.Size = new System.Drawing.Size(640, 394);
+			this.tabControlMain.Size = new System.Drawing.Size(844, 424);
 			this.tabControlMain.TabIndex = 0;
 			// 
 			// tabPageIAIAssistant
@@ -105,14 +105,14 @@ namespace MedicalEq
 			this.tabPageIAIAssistant.Location = new System.Drawing.Point(4, 25);
 			this.tabPageIAIAssistant.Name = "tabPageIAIAssistant";
 			this.tabPageIAIAssistant.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageIAIAssistant.Size = new System.Drawing.Size(632, 365);
+			this.tabPageIAIAssistant.Size = new System.Drawing.Size(836, 395);
 			this.tabPageIAIAssistant.TabIndex = 1;
 			this.tabPageIAIAssistant.Text = "ИИ Помощник";
 			this.tabPageIAIAssistant.UseVisualStyleBackColor = true;
 			// 
 			// buttonSendUserMessage
 			// 
-			this.buttonSendUserMessage.Location = new System.Drawing.Point(480, 315);
+			this.buttonSendUserMessage.Location = new System.Drawing.Point(681, 338);
 			this.buttonSendUserMessage.Name = "buttonSendUserMessage";
 			this.buttonSendUserMessage.Size = new System.Drawing.Size(131, 35);
 			this.buttonSendUserMessage.TabIndex = 4;
@@ -124,7 +124,7 @@ namespace MedicalEq
 			// 
 			this.richTextBoxUserMessage.Location = new System.Drawing.Point(17, 261);
 			this.richTextBoxUserMessage.Name = "richTextBoxUserMessage";
-			this.richTextBoxUserMessage.Size = new System.Drawing.Size(594, 48);
+			this.richTextBoxUserMessage.Size = new System.Drawing.Size(795, 71);
 			this.richTextBoxUserMessage.TabIndex = 3;
 			this.richTextBoxUserMessage.Text = "";
 			// 
@@ -140,7 +140,7 @@ namespace MedicalEq
 			// 
 			this.richTextBoxConversation.Location = new System.Drawing.Point(17, 42);
 			this.richTextBoxConversation.Name = "richTextBoxConversation";
-			this.richTextBoxConversation.Size = new System.Drawing.Size(594, 177);
+			this.richTextBoxConversation.Size = new System.Drawing.Size(795, 177);
 			this.richTextBoxConversation.TabIndex = 1;
 			this.richTextBoxConversation.Text = "";
 			// 
@@ -165,14 +165,14 @@ namespace MedicalEq
 			this.tabPageManualEnter.Location = new System.Drawing.Point(4, 25);
 			this.tabPageManualEnter.Name = "tabPageManualEnter";
 			this.tabPageManualEnter.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageManualEnter.Size = new System.Drawing.Size(632, 365);
+			this.tabPageManualEnter.Size = new System.Drawing.Size(836, 395);
 			this.tabPageManualEnter.TabIndex = 0;
 			this.tabPageManualEnter.Text = "Ручной ввод";
 			this.tabPageManualEnter.UseVisualStyleBackColor = true;
 			// 
 			// buttonGenerate
 			// 
-			this.buttonGenerate.Location = new System.Drawing.Point(470, 313);
+			this.buttonGenerate.Location = new System.Drawing.Point(674, 344);
 			this.buttonGenerate.Name = "buttonGenerate";
 			this.buttonGenerate.Size = new System.Drawing.Size(141, 35);
 			this.buttonGenerate.TabIndex = 10;
@@ -184,7 +184,7 @@ namespace MedicalEq
 			// 
 			this.richTextBoxGenerated.Location = new System.Drawing.Point(15, 158);
 			this.richTextBoxGenerated.Name = "richTextBoxGenerated";
-			this.richTextBoxGenerated.Size = new System.Drawing.Size(596, 149);
+			this.richTextBoxGenerated.Size = new System.Drawing.Size(800, 169);
 			this.richTextBoxGenerated.TabIndex = 9;
 			this.richTextBoxGenerated.Text = "";
 			// 
@@ -193,7 +193,7 @@ namespace MedicalEq
 			this.labelResultFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelResultFile.Location = new System.Drawing.Point(141, 108);
 			this.labelResultFile.Name = "labelResultFile";
-			this.labelResultFile.Size = new System.Drawing.Size(470, 35);
+			this.labelResultFile.Size = new System.Drawing.Size(674, 35);
 			this.labelResultFile.TabIndex = 8;
 			// 
 			// labelScoresFile
@@ -201,7 +201,7 @@ namespace MedicalEq
 			this.labelScoresFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelScoresFile.Location = new System.Drawing.Point(141, 65);
 			this.labelScoresFile.Name = "labelScoresFile";
-			this.labelScoresFile.Size = new System.Drawing.Size(470, 27);
+			this.labelScoresFile.Size = new System.Drawing.Size(674, 27);
 			this.labelScoresFile.TabIndex = 7;
 			// 
 			// labelPatientsFile
@@ -209,7 +209,7 @@ namespace MedicalEq
 			this.labelPatientsFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.labelPatientsFile.Location = new System.Drawing.Point(141, 15);
 			this.labelPatientsFile.Name = "labelPatientsFile";
-			this.labelPatientsFile.Size = new System.Drawing.Size(470, 25);
+			this.labelPatientsFile.Size = new System.Drawing.Size(674, 25);
 			this.labelPatientsFile.TabIndex = 6;
 			// 
 			// buttonResultFile
@@ -246,8 +246,9 @@ namespace MedicalEq
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(669, 418);
+			this.ClientSize = new System.Drawing.Size(859, 448);
 			this.Controls.Add(this.tabControlMain);
+			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.Text = "Мед-ассистент";
 			this.Shown += new System.EventHandler(this.MainFormShown);
