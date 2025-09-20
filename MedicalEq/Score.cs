@@ -28,17 +28,17 @@ namespace MedicalEq
 		
 		public Score(CSVFile file, CSVLine line)
 		{
-			this.Name = Grade.GetValue(file, line, "Score");
+			this.Name = Grade.GetValue(file, line, ParsingStream.ConvertTo1251("Показатель"));
 			
-			this.MinValue = Grade.GetNumericValue(file, line, "Minimal value");
+			this.MinValue = Grade.GetNumericValue(file, line, ParsingStream.ConvertTo1251("Минимальное значение"));
 			
-			this.MaxValue = Grade.GetNumericValue(file, line, "Maximal value");
+			this.MaxValue = Grade.GetNumericValue(file, line, ParsingStream.ConvertTo1251("Максимальное значение"));
 			
-			this.Group = Grade.GetGrade(Grade.GetValue(file, line, "Group"));
+			this.Group = Grade.GetGrade(Grade.GetValue(file, line, ParsingStream.ConvertTo1251("Группа")));
 			
-			this.Comment = Grade.GetValue(file, line, "Comment");
+			this.Comment = Grade.GetValue(file, line, ParsingStream.ConvertTo1251("Комментарий"));
 			
-			this.IsBase = Grade.GetValue(file, line, "Base") != null && Grade.GetValue(file, line, "Base").Equals("Yes");
+			this.IsBase = Grade.GetValue(file, line, ParsingStream.ConvertTo1251("Основное")) != null && Grade.GetValue(file, line, ParsingStream.ConvertTo1251("Основное")).ToUpper().Equals(ParsingStream.ConvertTo1251("ДА"));
 			
 			this.Group.Scores.Add(this);
 			

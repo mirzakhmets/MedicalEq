@@ -15,6 +15,15 @@ namespace CSVdb
     }
 
     public void Read() {
+    	/*
+    	int b = this.stream.ReadByte();
+    	
+    	if (b == -1) {
+    		this.current = -1;
+    	} else {
+    		this.current = (int) (System.Text.Encoding.GetEncoding(1251).GetBytes(new char[] {(char) b}))[0];
+    	}*/
+    	
     	this.current = this.stream.ReadByte();
     }
 
@@ -26,6 +35,10 @@ namespace CSVdb
     {
       while (" \r\t\v".IndexOf(checked ((char) this.current)) >= 0)
         this.Read();
+    }
+    
+    public static string ConvertTo1251 (string text) {
+    	return new string(System.Text.Encoding.Default.GetChars(System.Text.Encoding.GetEncoding(1251).GetBytes(text)));
     }
   }
 }

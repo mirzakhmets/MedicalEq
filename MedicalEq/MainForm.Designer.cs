@@ -30,6 +30,8 @@ namespace MedicalEq
 		private System.Windows.Forms.Label labelUserMessage;
 		private System.Windows.Forms.RichTextBox richTextBoxUserMessage;
 		private System.Windows.Forms.Button buttonSendUserMessage;
+		private System.Windows.Forms.RichTextBox richTextBoxGenerated;
+		private System.Windows.Forms.Button buttonGenerate;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -62,6 +64,8 @@ namespace MedicalEq
 			this.richTextBoxConversation = new System.Windows.Forms.RichTextBox();
 			this.labelConversation = new System.Windows.Forms.Label();
 			this.tabPageManualEnter = new System.Windows.Forms.TabPage();
+			this.buttonGenerate = new System.Windows.Forms.Button();
+			this.richTextBoxGenerated = new System.Windows.Forms.RichTextBox();
 			this.labelResultFile = new System.Windows.Forms.Label();
 			this.labelScoresFile = new System.Windows.Forms.Label();
 			this.labelPatientsFile = new System.Windows.Forms.Label();
@@ -150,6 +154,8 @@ namespace MedicalEq
 			// 
 			// tabPageManualEnter
 			// 
+			this.tabPageManualEnter.Controls.Add(this.buttonGenerate);
+			this.tabPageManualEnter.Controls.Add(this.richTextBoxGenerated);
 			this.tabPageManualEnter.Controls.Add(this.labelResultFile);
 			this.tabPageManualEnter.Controls.Add(this.labelScoresFile);
 			this.tabPageManualEnter.Controls.Add(this.labelPatientsFile);
@@ -163,6 +169,24 @@ namespace MedicalEq
 			this.tabPageManualEnter.TabIndex = 0;
 			this.tabPageManualEnter.Text = "Ручной ввод";
 			this.tabPageManualEnter.UseVisualStyleBackColor = true;
+			// 
+			// buttonGenerate
+			// 
+			this.buttonGenerate.Location = new System.Drawing.Point(470, 313);
+			this.buttonGenerate.Name = "buttonGenerate";
+			this.buttonGenerate.Size = new System.Drawing.Size(141, 35);
+			this.buttonGenerate.TabIndex = 10;
+			this.buttonGenerate.Text = "Сгенерировать";
+			this.buttonGenerate.UseVisualStyleBackColor = true;
+			this.buttonGenerate.Click += new System.EventHandler(this.ButtonGenerateClick);
+			// 
+			// richTextBoxGenerated
+			// 
+			this.richTextBoxGenerated.Location = new System.Drawing.Point(15, 158);
+			this.richTextBoxGenerated.Name = "richTextBoxGenerated";
+			this.richTextBoxGenerated.Size = new System.Drawing.Size(596, 149);
+			this.richTextBoxGenerated.TabIndex = 9;
+			this.richTextBoxGenerated.Text = "";
 			// 
 			// labelResultFile
 			// 
@@ -196,6 +220,7 @@ namespace MedicalEq
 			this.buttonResultFile.TabIndex = 5;
 			this.buttonResultFile.Text = "Сохранить";
 			this.buttonResultFile.UseVisualStyleBackColor = true;
+			this.buttonResultFile.Click += new System.EventHandler(this.ButtonResultFileClick);
 			// 
 			// buttonScoresFile
 			// 
@@ -205,6 +230,7 @@ namespace MedicalEq
 			this.buttonScoresFile.TabIndex = 3;
 			this.buttonScoresFile.Text = "Скоринг...";
 			this.buttonScoresFile.UseVisualStyleBackColor = true;
+			this.buttonScoresFile.Click += new System.EventHandler(this.ButtonScoresFileClick);
 			// 
 			// buttonPatientsFile
 			// 
@@ -214,6 +240,7 @@ namespace MedicalEq
 			this.buttonPatientsFile.TabIndex = 1;
 			this.buttonPatientsFile.Text = "Пациенты...";
 			this.buttonPatientsFile.UseVisualStyleBackColor = true;
+			this.buttonPatientsFile.Click += new System.EventHandler(this.ButtonPatientsFileClick);
 			// 
 			// MainForm
 			// 

@@ -63,7 +63,7 @@ namespace MedicalEq
 		
 		public Grade(CSVFile file, CSVLine line)
 		{
-			this.Name = GetValue(file, line, "Group");
+			this.Name = GetValue(file, line, ParsingStream.ConvertTo1251("Группа"));
 			
 			Grades.Add(this.Name, this);
 		}

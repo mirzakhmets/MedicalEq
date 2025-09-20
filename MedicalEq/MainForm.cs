@@ -59,24 +59,24 @@ namespace MedicalEq
 			
 			CSVFile result = new CSVFile();
 			
-			result.names.Add("Name");
-			result.namesIndex.Add("Name", 0);
+			result.names.Add(ParsingStream.ConvertTo1251("Имя"));
+			result.namesIndex.Add(ParsingStream.ConvertTo1251("Имя"), 0);
 			
-			result.names.Add("Group");
-			result.namesIndex.Add("Group", 1);
+			result.names.Add(ParsingStream.ConvertTo1251("Группа"));
+			result.namesIndex.Add(ParsingStream.ConvertTo1251("Группа"), 1);
 			
-			result.names.Add("Comment");
-			result.namesIndex.Add("Comment", 2);
+			result.names.Add(ParsingStream.ConvertTo1251("Комментарий"));
+			result.namesIndex.Add(ParsingStream.ConvertTo1251("Комментарий"), 2);
 			
-			CSVFile patients = new CSVFile(new ParsingStream(new FileStream(labelPatientsFile.Text, FileMode.Open)), "Patients");
-			CSVFile scoring = new CSVFile(new ParsingStream(new FileStream(labelScoresFile.Text, FileMode.Open)), "Scoring");
+			CSVFile patients = new CSVFile(new ParsingStream(new FileStream(labelPatientsFile.Text, FileMode.Open)), ParsingStream.ConvertTo1251("Пациенты"));
+			CSVFile scoring = new CSVFile(new ParsingStream(new FileStream(labelScoresFile.Text, FileMode.Open)), ParsingStream.ConvertTo1251("Скоринг"));
 			
 			foreach (CSVLine line in scoring.lines) {
 				new Score(scoring, line);
 			}
 			
 			foreach (CSVLine patient in patients.lines) {
-				Patient.AddPatient(Grade.GetValue(patients, patient, "Name")).AddScore(Grade.GetValue(patients, patient, "Score"), Grade.GetNumericValue(patients, patient, "Value"));
+				Patient.AddPatient(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Имя"))).AddScore(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Показатель")), Grade.GetNumericValue(patients, patient, ParsingStream.ConvertTo1251("Значение")));
 			}
 			
 			foreach (string _patient in Patient.Patients.Keys) {
@@ -207,8 +207,6 @@ namespace MedicalEq
 	                //MessageBox.Show("Response: " + errorText);
 	            }
 	        }
-	        
-	        return null;
 	    }
 		
 		void MainFormShown(object sender, EventArgs e)
@@ -220,6 +218,10 @@ namespace MedicalEq
 			richTextBoxConversation.Text += 
 				"?: " + richTextBoxUserMessage.Text + "\n!:"
 					+ this.MakeRequest(richTextBoxUserMessage.Text) + "\n\n";
+		}
+		void ButtonGenerateClick(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }
