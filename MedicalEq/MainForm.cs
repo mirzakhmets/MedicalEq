@@ -15,6 +15,10 @@ using System.Windows.Forms;
 using CSVdb;
 using CSVdb.CSV;
 
+using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
+
 namespace MedicalEq
 {
 	/// <summary>
@@ -131,6 +135,91 @@ namespace MedicalEq
 			}
 			
 			result.Save(labelResultFile.Text);
+		}
+		
+		public string MakeRequest(string text)
+	    {
+	        string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+	        string apiKey = "AIzaSyBHGsDdBCy5_ZNYqD847FLd-nLSltfnhjo"; // Replace with your actual API key
+	        
+	        string jsonPayload = @"{
+	            ""contents"": [
+	                {
+	                    ""parts"": [
+	                        {
+	                            ""text"": ""${text}""
+	                        }
+	                    ]
+	                }
+	            ]
+	        }".Replace("${text}", text);
+	
+	        try
+	        {
+	            // Create the web request
+	            WebRequest request = WebRequest.Create(url);
+	            request.Method = "POST";
+	            request.ContentType = "application/json";
+	            request.Headers.Add("X-goog-api-key", apiKey);
+	
+	            // Convert JSON payload to bytes
+	            byte[] byteArray = Encoding.UTF8.GetBytes(jsonPayload);
+	            request.ContentLength = byteArray.Length;
+	
+	            // Write the payload to the request stream
+	            using (Stream dataStream = request.GetRequestStream())
+	            {
+	                dataStream.Write(byteArray, 0, byteArray.Length);
+	            }
+	
+	            // Get the response
+	            using (WebResponse response = request.GetResponse())
+	            using (Stream responseStream = response.GetResponseStream())
+	            using (StreamReader reader = new StreamReader(responseStream))
+	            {
+	                string responseText = reader.ReadToEnd();
+	                
+	                string pattern = @"""text""\s*:\s*""([^""]*)""";
+	                
+	                Regex regex = new Regex(pattern);
+
+			        // Find matches
+			        Match match = regex.Match(responseText);
+			        
+			        if (match.Success)
+			        {
+			            // Group 1 contains the captured text value
+			            responseText = match.Groups[1].Value.Replace("\\n", "\n").Trim();
+			        }
+	                
+			        return responseText;
+	                //MessageBox.Show(responseText);
+	            }
+	        }
+	        catch (WebException ex)
+	        {
+	            using (Stream responseStream = ex.Response.GetResponseStream())
+	            using (StreamReader reader = new StreamReader(responseStream))
+	            {
+	                string errorText = reader.ReadToEnd();
+	                return "Ошибка: " + ex.Message + "\nОтвет: " + errorText;
+	                //MessageBox.Show("Error: " + ex.Message);
+	                //MessageBox.Show("Response: " + errorText);
+	            }
+	        }
+	        
+	        return null;
+	    }
+		
+		void MainFormShown(object sender, EventArgs e)
+		{
+			
+		}
+		void ButtonSendUserMessageClick(object sender, EventArgs e)
+		{
+			richTextBoxConversation.Text += 
+				"?: " + richTextBoxUserMessage.Text + "\n"
+					+ this.MakeRequest(richTextBoxUserMessage.Text) + "\n\n";
 		}
 	}
 }
