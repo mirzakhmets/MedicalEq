@@ -122,6 +122,7 @@ namespace MedicalEq
 			// 
 			// richTextBoxUserMessage
 			// 
+			this.richTextBoxUserMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.richTextBoxUserMessage.Location = new System.Drawing.Point(17, 261);
 			this.richTextBoxUserMessage.Name = "richTextBoxUserMessage";
 			this.richTextBoxUserMessage.Size = new System.Drawing.Size(795, 71);
@@ -138,6 +139,7 @@ namespace MedicalEq
 			// 
 			// richTextBoxConversation
 			// 
+			this.richTextBoxConversation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.richTextBoxConversation.Location = new System.Drawing.Point(17, 42);
 			this.richTextBoxConversation.Name = "richTextBoxConversation";
 			this.richTextBoxConversation.Size = new System.Drawing.Size(795, 177);
@@ -182,6 +184,7 @@ namespace MedicalEq
 			// 
 			// richTextBoxGenerated
 			// 
+			this.richTextBoxGenerated.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.richTextBoxGenerated.Location = new System.Drawing.Point(15, 158);
 			this.richTextBoxGenerated.Name = "richTextBoxGenerated";
 			this.richTextBoxGenerated.Size = new System.Drawing.Size(800, 169);
