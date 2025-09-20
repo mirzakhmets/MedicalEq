@@ -110,5 +110,51 @@ namespace MedicalEq
 		}
 
 		#endregion
+		
+		public string MakeRequest() {
+			string result = "";
+			
+			int k = 0;
+			
+			foreach (Score score in this.Scores) {
+				if (score.IsBase) {
+					if (k > 0) {
+						result += "и ";
+					} else {
+						result += "Для группы '" + ParsingStream.ConvertToDefault(this.Name) + "': ";
+					}
+					
+					result += "если " + score.MakeRequest();
+					
+					++k;
+				}
+			}
+			
+			if (k > 0) {
+				result += ".";
+			}
+			
+			k = 0;
+			
+			foreach (Score score in this.Scores) {
+				if (!score.IsBase) {
+					if (k > 0) {
+						result += ", ";
+					} else {
+						result += "При этом: ";
+					}
+					
+					result += "если " + score.MakeRequest();
+					
+					++k;
+				}
+			}
+			
+			if (k > 0) {
+				result += ".";
+			}
+			
+			return (result);
+		}
 	}
 }

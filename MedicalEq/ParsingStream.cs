@@ -40,5 +40,9 @@ namespace CSVdb
     public static string ConvertTo1251 (string text) {
     	return new string(System.Text.Encoding.Default.GetChars(System.Text.Encoding.GetEncoding(1251).GetBytes(text)));
     }
+    
+    public static string ConvertToDefault (string text) {
+    	return new string(System.Text.Encoding.GetEncoding(1251).GetChars(System.Text.Encoding.Default.GetBytes(text)));
+    } 
   }
 }

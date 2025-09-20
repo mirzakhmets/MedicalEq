@@ -55,6 +55,9 @@ namespace MedicalEq
 				return;
 			}
 			
+			Grade.Grades.Clear();
+			Patient.Patients.Clear();
+			
 			labelResultFile.Text = saveFileDialog.FileName;
 			
 			CSVFile result = new CSVFile();
@@ -221,7 +224,29 @@ namespace MedicalEq
 		}
 		void ButtonGenerateClick(object sender, EventArgs e)
 		{
+			Grade.Grades.Clear();
+			Patient.Patients.Clear();
 			
+			CSVFile patients = new CSVFile(new ParsingStream(new FileStream(labelPatientsFile.Text, FileMode.Open)), ParsingStream.ConvertTo1251("Пациенты"));
+			CSVFile scoring = new CSVFile(new ParsingStream(new FileStream(labelScoresFile.Text, FileMode.Open)), ParsingStream.ConvertTo1251("Скоринг"));
+			
+			foreach (CSVLine line in scoring.lines) {
+				new Score(scoring, line);
+			}
+			
+			foreach (CSVLine patient in patients.lines) {
+				Patient.AddPatient(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Имя"))).AddScore(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Показатель")), Grade.GetNumericValue(patients, patient, ParsingStream.ConvertTo1251("Значение")));
+			}
+			
+			foreach (Grade grade in Grade.Grades.Values) {
+				richTextBoxGenerated.Text += grade.MakeRequest() + "\n";
+			}
+			
+			foreach (Patient patient in Patient.Patients.Values) {
+				richTextBoxGenerated.Text += patient.MakeRequest() + "\n";
+			}
+			
+			richTextBoxGenerated.Text += "\n";
 		}
 	}
 }

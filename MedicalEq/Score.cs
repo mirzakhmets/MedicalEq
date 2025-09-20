@@ -50,5 +50,13 @@ namespace MedicalEq
 		public bool Accepts(float value) {
 			return (value >= this.MinValue || this.MinValue == -1) && (value <= this.MaxValue || this.MaxValue == -1);
 		}
+		
+		public string MakeRequest() {
+			return (
+				("показатель " + ParsingStream.ConvertToDefault(this.Name).ToLower() + " имеет")
+					+ (this.MinValue >= 0 ? " минимальное значение " + this.MinValue : "")
+					+ (this.MaxValue >= 0 && this.MinValue >= 0 ? " и максимальное значение " + this.MaxValue : (this.MaxValue >= 0 ? " максимальное значение " + this.MaxValue : ""))
+				);
+		}
 	}
 }
