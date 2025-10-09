@@ -53,7 +53,7 @@ namespace MedicalEq
 		
 		public string MakeRequest() {
 			return (
-				("показатель " + ParsingStream.ConvertToDefault(this.Name).ToLower() + " имеет")
+				("показатель " + ParsingStream.ConvertToDefault(this.Name)/*.ToLower()*/ + " имеет")
 					+ (this.MinValue >= 0 ? " минимальное значение " + this.MinValue : "")
 					+ (this.MaxValue >= 0 && this.MinValue >= 0 ? " и максимальное значение " + this.MaxValue : (this.MaxValue >= 0 ? " максимальное значение " + this.MaxValue : ""))
 				);

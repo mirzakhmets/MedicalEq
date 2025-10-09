@@ -79,6 +79,61 @@ namespace MedicalEq
 			}
 			
 			foreach (CSVLine patient in patients.lines) {
+				if (Patient.Patients.ContainsKey((string) patient.values[patients.namesIndex[ParsingStream.ConvertTo1251("ФИО")]])) {
+					continue;
+				}
+				
+				/*
+				Patient patient2 = Patient.AddPatient((string) patient.values[patients.namesIndex[ParsingStream.ConvertTo1251("ФИО")]]);
+				
+				for (int index = 0; index < patient.values.Count; ++index) {
+					string patientScoreName = null;
+					
+					if (index < patients.names.Count) {
+						patientScoreName = (string) patients.names[index];
+					}
+					
+					if (patientScoreName != null) {
+						patientScoreName = patientScoreName.Trim();
+						
+						string v = (string) patient.values[index];
+						
+						if (v != null) {
+							float result2 = 0;
+
+							if (float.TryParse(v, out result2)) {
+								try {
+									patient2.AddScore(patientScoreName, result2);
+								} catch (Exception ex) {
+									MessageBox.Show(patientScoreName + " ; " + result2);
+								}
+							} else {
+								//patient2.AddScore(patientScoreName, v);
+							}
+						}
+					}
+				}
+				*/
+				
+				/*
+				foreach (object _patientScoreName in patients.names) {
+					string patientScoreName = (string) _patientScoreName;
+					
+					//patientScoreName = ParsingStream.ConvertTo1251(patientScoreName.Trim());
+					
+					if (patientScoreName.Length > 0 && index < patient.values.Count) {
+						string v = (string) patient.values[index]; //Grade.GetValue(patients, patient, patientScoreName);
+						
+						float result2 = 0;
+						
+						if (v != null && float.TryParse(v, out result2)) {
+							patient2.AddScore(patientScoreName, result2);
+						}
+					}
+					
+					++index;
+				}*/
+				
 				Patient.AddPatient(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Имя"))).AddScore(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Показатель")), Grade.GetNumericValue(patients, patient, ParsingStream.ConvertTo1251("Значение")));
 			}
 			
@@ -235,8 +290,66 @@ namespace MedicalEq
 			}
 			
 			foreach (CSVLine patient in patients.lines) {
-				Patient.AddPatient(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Имя"))).AddScore(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Показатель")), Grade.GetNumericValue(patients, patient, ParsingStream.ConvertTo1251("Значение")));
+				if (Patient.Patients.ContainsKey((string) patient.values[patients.namesIndex[ParsingStream.ConvertTo1251("ФИО")]])) {
+					continue;
+				}
+				
+				Patient patient2 = Patient.AddPatient((string) patient.values[patients.namesIndex[ParsingStream.ConvertTo1251("ФИО")]]);
+				
+				for (int index = 0; index < patient.values.Count; ++index) {
+					string patientScoreName = null;
+					
+					if (index < patients.names.Count) {
+						patientScoreName = (string) patients.names[index];
+					}
+					
+					if (patientScoreName != null) {
+						patientScoreName = patientScoreName.Trim();
+						
+						string v = (string) patient.values[index];
+						
+						if (v != null) {
+							float result2 = 0;
+
+							if (float.TryParse(v, out result2)) {
+								try {
+									patient2.AddScore(patientScoreName, result2);
+								} catch (Exception ex) {
+									MessageBox.Show(patientScoreName + " ; " + result2);
+								}
+							} else {
+								//patient2.AddScore(patientScoreName, v);
+							}
+						}
+					}
+				}
+				
+				/*
+				foreach (object _patientScoreName in patients.names) {
+					string patientScoreName = (string) _patientScoreName;
+					
+					//patientScoreName = ParsingStream.ConvertTo1251(patientScoreName.Trim());
+					
+					if (patientScoreName.Length > 0 && index < patient.values.Count) {
+						string v = (string) patient.values[index]; //Grade.GetValue(patients, patient, patientScoreName);
+						
+						float result2 = 0;
+						
+						if (v != null && float.TryParse(v, out result2)) {
+							patient2.AddScore(patientScoreName, result2);
+						}
+					}
+					
+					++index;
+				}*/
+				
+				//Patient.AddPatient(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Имя"))).AddScore(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Показатель")), Grade.GetNumericValue(patients, patient, ParsingStream.ConvertTo1251("Значение")));
 			}
+			
+			/*
+			foreach (CSVLine patient in patients.lines) {
+				Patient.AddPatient(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Имя"))).AddScore(Grade.GetValue(patients, patient, ParsingStream.ConvertTo1251("Показатель")), Grade.GetNumericValue(patients, patient, ParsingStream.ConvertTo1251("Значение")));
+			}*/
 			
 			foreach (Grade grade in Grade.Grades.Values) {
 				richTextBoxGenerated.Text += grade.MakeRequest() + "\n";
@@ -251,6 +364,10 @@ namespace MedicalEq
 			}
 			
 			richTextBoxGenerated.Text += "\n";
+		}
+		void RichTextBoxGeneratedTextChanged(object sender, EventArgs e)
+		{
+	
 		}
 	}
 }

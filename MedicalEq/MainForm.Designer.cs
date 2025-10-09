@@ -190,6 +190,7 @@ namespace MedicalEq
 			this.richTextBoxGenerated.Size = new System.Drawing.Size(800, 169);
 			this.richTextBoxGenerated.TabIndex = 9;
 			this.richTextBoxGenerated.Text = "";
+			this.richTextBoxGenerated.TextChanged += new System.EventHandler(this.RichTextBoxGeneratedTextChanged);
 			// 
 			// labelResultFile
 			// 

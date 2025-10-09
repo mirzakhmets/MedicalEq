@@ -37,7 +37,9 @@ namespace MedicalEq
 		
 		public static string GetValue(CSVFile file, CSVLine line, string name) {
 			if (file.namesIndex.ContainsKey(name)) {
-				return (string) line.values[file.namesIndex[name]];
+				if (file.namesIndex[name] < line.values.Count) {
+					return (string) line.values[file.namesIndex[name]];
+				}
 			}
 			
 			return null;

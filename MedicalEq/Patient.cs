@@ -65,9 +65,9 @@ namespace MedicalEq
 				int index = this.ScoreIndexes[score];
 				
 				if (k > 0) {
-					result += ", " + ParsingStream.ConvertToDefault(score).ToLower() + " " + this.ScoreValues[index];
+					result += ", " + ParsingStream.ConvertToDefault(score)/*.ToLower()*/ + " " + this.ScoreValues[index];
 				} else {
-					result += " имеет показатели: " + ParsingStream.ConvertToDefault(score).ToLower() + " " + this.ScoreValues[index];
+					result += " имеет показатели: " + ParsingStream.ConvertToDefault(score)/*.ToLower()*/ + " " + this.ScoreValues[index];
 				}
 				
 				++k;

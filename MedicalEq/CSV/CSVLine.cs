@@ -38,36 +38,36 @@ namespace CSVdb.CSV
       }
       if (num == -1)
       {
-        while (!stream.atEnd() && ",;".IndexOf(checked ((char) stream.current)) == -1 && stream.current != 10)
+        while (!stream.atEnd() && ",;".IndexOf(((char) stream.current)) == -1 && stream.current != 10)
         {
-          if (stream.current == 92)
+          if (stream.current == 92 && num != -1)
           {
             stream.Read();
-            str += checked ((char) stream.current);
+            str += ((char) stream.current);
           }
           else
-            str += checked ((char) stream.current);
+            str += ((char) stream.current);
           stream.Read();
         }
       }
       else
       {
-        while (!stream.atEnd() && stream.current != 10 && stream.current != num && ",;".IndexOf(checked ((char) stream.current)) == -1)
+        while (!stream.atEnd() && stream.current != 10 && stream.current != num && ",;".IndexOf(((char) stream.current)) == -1)
         {
           if (stream.current == 92)
           {
             stream.Read();
-            str += checked ((char) stream.current);
+            str += ((char) stream.current);
           }
           else
-            str += checked ((char) stream.current);
+            str += ((char) stream.current);
           stream.Read();
         }
         if (stream.current == num)
           stream.Read();
       }
       stream.parseBlanks();
-      if (",; \t".IndexOf(checked ((char) stream.current)) >= 0)
+      if (",; \t".IndexOf(((char) stream.current)) >= 0)
         stream.Read();
       stream.parseBlanks();
       return str.Trim();

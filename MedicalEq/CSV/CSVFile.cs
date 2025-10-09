@@ -32,8 +32,19 @@ namespace CSVdb.CSV
       while (!stream.atEnd())
       {
         CSVLine csvLine2 = new CSVLine(stream);
-        if (csvLine2.values.Count > 0)
+        
+        int k = 0;
+        
+        foreach (string s in csvLine2.values) {
+        	if (s.Length > 0) {
+        		++k;
+        	}
+        }
+        
+        //if (csvLine2.values.Count > 0)
+        if (k > 0) {
           this.lines.Add((object) csvLine2);
+        }
       }
     }
     
