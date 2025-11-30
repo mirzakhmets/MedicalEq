@@ -198,7 +198,7 @@ namespace MedicalEq
 		public string MakeRequest(string text)
 	    {
 	        string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-	        string apiKey = "AIzaSyBHGsDdBCy5_ZNYqD847FLd-nLSltfnhjo"; // Replace with your actual API key
+	        string apiKey = ""; // Replace with your actual API key, ...nhjo
 	        
 	        string jsonPayload = @"{
 	            ""contents"": [
